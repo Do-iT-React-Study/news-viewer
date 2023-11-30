@@ -36,7 +36,7 @@ export const NewsItem = ({article}) => {
 };
 
 export const NewsItemWrapper = styled.div`
-    background-color: pink;
+    background-color: honeydew;
     display: flex;
     gap: 30px;
     padding: 20px;
@@ -59,7 +59,6 @@ export const NewsItemWrapper = styled.div`
         }
 
     .text-decoration {
-        border: 1px solid blue;
     }
 }
 `;

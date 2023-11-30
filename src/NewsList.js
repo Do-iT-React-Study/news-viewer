@@ -2,14 +2,17 @@ import { useEffect, useState } from "react";
 import { NewsItem } from "./NewsItem";
 import axios from "../node_modules/axios/index";
 
-export const NewsList = () => {
+export const NewsList = ({category}) => {
 
     const [article, setArticle] = useState(null);
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const res = await axios.get("https://newsapi.org/v2/top-headlines?country=kr&apiKey=b2b645f6f4d343c592e893ca0ae71ff1");
+
+                const query = category == 'all' ? '' : `&category=${category}`;
+
+                const res = await axios.get(`https://newsapi.org/v2/top-headlines?country=kr${query}&apiKey=b2b645f6f4d343c592e893ca0ae71ff1`);
 
                 console.log(res.data);
                 setArticle(res.data.articles);
@@ -18,7 +21,7 @@ export const NewsList = () => {
             }
         };
         fetchData();
-    },[]);
+    },[category]);
 
     const sampleData = {
         title:"제목",
