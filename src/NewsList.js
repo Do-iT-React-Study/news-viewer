@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { NewsItem } from "./NewsItem"
 import axios from "../node_modules/axios/index";
-export const NewsList = ({}) => {
+export const NewsList = ({category}) => {
 
     const [article, setArticle] = useState(null);
 
@@ -9,8 +9,11 @@ export const NewsList = ({}) => {
 
         const fetchData = async () => {
             try{
+
+                const query =  category == 'all'? "":`&category=${category}`
+
                 const res = await axios.get(
-                    'https://newsapi.org/v2/top-headlines?country=kr&apiKey=52429beac4194927a8d8b7bbc5caccfd'
+                    `https://newsapi.org/v2/top-headlines?country=kr${query}&apiKey=52429beac4194927a8d8b7bbc5caccfd`
                 )
                 console.log(res.data);
 
@@ -23,7 +26,7 @@ export const NewsList = ({}) => {
 
         fetchData();
 
-    }, []);
+    }, [category]);
 
     const sampleData = {
         title:'제목',

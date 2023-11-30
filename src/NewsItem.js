@@ -56,7 +56,6 @@ export const NewsItemWrapper = styled.div`
             margin: 10px;
             text-decoration: none;
             color: black;
-            border: 2px solid red;
         }
 
         .text-con{
