@@ -2,15 +2,16 @@ import { useEffect, useState } from "react";
 import { NewsItem } from "./NewsItem";
 import axios from "../node_modules/axios/index";
 
-export const NewsList = () => {
+export const NewsList = ({ category }) => {
     const [article, setArticle] = useState(null);
 
     useEffect(() => {
 
         const fetchData = async () => {
             try {
+                const query = category == "all" ? "" : `&category=${category}`;
                 const res = await axios.get(
-                    "https://newsapi.org/v2/top-headlines?country=kr&apiKey=56f21f8d90c24d8388e8fb43ae61acff"
+                    `https://newsapi.org/v2/top-headlines?country=kr${query}&apiKey=56f21f8d90c24d8388e8fb43ae61acff`
                 );
 
                 console.log(res.data);
@@ -20,7 +21,7 @@ export const NewsList = () => {
             }
         };
         fetchData();
-    }, []);
+    }, [category]);
 
     const sampleData = {
         title: "제목",

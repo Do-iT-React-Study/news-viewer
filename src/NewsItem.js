@@ -61,14 +61,14 @@ export const NewsItemWrapper = styled.div`
 
     .article-text {
         font-family: Pretendard;
-    
+    }
         
     .text-title {
         text-decoration: none;
         color: black;
     }
     
-    }
+    
 
     .text-description {
         

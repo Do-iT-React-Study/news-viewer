@@ -1,11 +1,27 @@
 import logo from "./logo.svg";
 import "./App.css";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import axios from "../node_modules/axios/index";
 import { NewsList } from "./NewsList";
+import { Categories } from "./components/Categories";
+import { Routes, Route } from 'react-router-dom';
+import { NewsPage } from "./pages/NewsPage";
 
 function App() {
+
+  return (
+    <Routes>
+      <Route 
+        path = "/:category?"
+        element={<NewsPage />}
+    />  
+    </Routes>
+  )
+
+
+  // const [category, setCategory] = useState("all");
   
+  // const onSelect = useCallback((category) => setCategory(category));
 
   // const [data, setData] = useState(null);
 
@@ -19,9 +35,17 @@ function App() {
   // };
 
   return (
-    <div>
-      <NewsList />
+    
+
+    // <div>
+    //   <Categories
+    //     category={category}
+    //     onSelect={onSelect}
+    //   />
+    //   <NewsList category={category}/>
       
+
+
       {/* <div>
         <button onClick={onClickAPI}>불러오기</button>
       </div>
@@ -33,8 +57,8 @@ function App() {
         />
       )} */}
 
-    </div>
+    // </div>
   );
-}
+};
 
 export default App;
